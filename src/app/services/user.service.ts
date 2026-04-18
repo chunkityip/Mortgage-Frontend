@@ -14,4 +14,8 @@ export class UserService {
   me(username: string): Observable<User> {
     throw new Error('Not implemented');
   }
+
+  getCurrentUsername(): string | null {
+    throw new Error('Not implemented');
+  }
 }

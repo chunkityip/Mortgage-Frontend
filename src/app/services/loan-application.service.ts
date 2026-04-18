@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import {
   AuditLog,
   LoanApplication,
@@ -9,20 +10,21 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class LoanApplicationService {
+
+  private readonly baseUrl = `${environment.apiUrl}/loans`;
+
   constructor(private http: HttpClient) {}
 
-  // ---------- CRUD ----------
-
-  create(dto: LoanApplication, username: string): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  createLoan(dto: LoanApplication): Observable<LoanApplication> {
+    return this.http.post<LoanApplication>(this.baseUrl, dto);
   }
 
-  update(id: number, dto: LoanApplication, username: string): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  updateLoan(id: number, dto: LoanApplication, username: string): Observable<LoanApplication> {
+    return this.http.put<LoanApplication>(`{this.baseUrl}$/{id}}`, dto);
   }
 
-  delete(id: number, username: string): Observable<void> {
-    throw new Error('Not implemented');
+  deleteLaon(id: number, username: string): Observable<void> {
+    return this.http.delete<void>(`{this.baseUrl}/${id}`);
   }
 
   getById(id: number): Observable<LoanApplication> {
