@@ -1,21 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ReferenceData } from '../types/reference-data.type';
+import { LoanCycle } from '../types/loan-cycle.type';
 
 @Injectable({ providedIn: 'root' })
-export class ReferenceDataService {
+export class LoanCycleService {
   constructor(private http: HttpClient) {}
 
-  propertyTypes(): Observable<ReferenceData[]> {
+  getAll(): Observable<LoanCycle[]> {
     throw new Error('Not implemented');
   }
 
-  loanTypes(): Observable<ReferenceData[]> {
+  getActive(): Observable<LoanCycle> {
     throw new Error('Not implemented');
   }
 
-  employmentStatuses(): Observable<ReferenceData[]> {
+  getById(id: number): Observable<LoanCycle> {
+    throw new Error('Not implemented');
+  }
+
+  lock(id: number, username: string): Observable<void> {
     throw new Error('Not implemented');
   }
 }
