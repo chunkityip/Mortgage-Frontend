@@ -1,0 +1,25 @@
+<div class="role-switcher" *ngIf="user$ | async as current; else signedOut">
+  <label>
+    <span class="label">Signed in as</span>
+    <select [value]="current.username" (change)="onChange($event)">
+      <option *ngFor="let u of users" [value]="u.username">
+        {{ u.fullName }} ({{ u.roles[0] }})
+      </option>
+    </select>
+  </label>
+  <button type="button" class="signout" (click)="signOut()">Sign out</button>
+</div>
+
+<ng-template #signedOut>
+  <div class="role-switcher">
+    <label>
+      <span class="label">Sign in as</span>
+      <select (change)="onChange($event)">
+        <option value="" disabled selected>— choose a user —</option>
+        <option *ngFor="let u of users" [value]="u.username">
+          {{ u.fullName }} ({{ u.roles[0] }})
+        </option>
+      </select>
+    </label>
+  </div>
+</ng-template>

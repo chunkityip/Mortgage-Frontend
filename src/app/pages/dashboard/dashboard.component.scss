@@ -1,0 +1,42 @@
+.dashboard {
+  padding: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  &__header {
+    margin-bottom: 24px;
+
+    h1 { margin: 0 0 4px; }
+    .role { color: #666; margin: 0; }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    display: block;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      transform: translateY(-1px);
+    }
+
+    h3 { margin: 0 0 6px; color: #1976d2; }
+    p  { margin: 0; color: #555; font-size: 14px; }
+  }
+
+  .empty {
+    color: #888;
+    font-style: italic;
+  }
+}

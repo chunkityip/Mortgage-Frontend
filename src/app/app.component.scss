@@ -1,0 +1,29 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 56px;
+    padding: 0 20px;
+    background: #1976d2;
+    color: #fff;
+  }
+
+  &__brand {
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &__main {
+    flex: 1;
+    background: #f5f7fa;
+  }
+
+  .spacer { flex: 1; }
+}

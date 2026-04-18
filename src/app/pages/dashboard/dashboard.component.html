@@ -1,0 +1,24 @@
+<div class="dashboard" *ngIf="user$ | async as user; else notSignedIn">
+  <header class="dashboard__header">
+    <h1>Welcome, {{ user.fullName }}</h1>
+    <p class="role">Role: <strong>{{ user.roles[0] }}</strong></p>
+  </header>
+
+  <section class="dashboard__cards" *ngIf="cards$ | async as cards">
+    <a *ngFor="let card of cards" class="card" [routerLink]="card.routerLink">
+      <h3>{{ card.title }}</h3>
+      <p>{{ card.description }}</p>
+    </a>
+
+    <p *ngIf="cards.length === 0" class="empty">
+      No actions available for this role.
+    </p>
+  </section>
+</div>
+
+<ng-template #notSignedIn>
+  <div class="dashboard">
+    <h1>Not signed in</h1>
+    <p>Use the RoleSwitcher in the header to sign in as a test user.</p>
+  </div>
+</ng-template>

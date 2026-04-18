@@ -1,0 +1,43 @@
+.role-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    font-size: 13px;
+  }
+
+  .label {
+    opacity: 0.85;
+  }
+
+  select {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+
+    option {
+      color: #222;
+    }
+  }
+
+  .signout {
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+
+    &:hover { background: rgba(255, 255, 255, 0.15); }
+  }
+}

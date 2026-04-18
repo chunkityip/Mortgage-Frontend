@@ -2,24 +2,28 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoanCycle } from '../types/loan-cycle.type';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class LoanCycleService {
+
+  private readonly baseUrl = `${environment.apiUrl}/cycles`;
+
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<LoanCycle[]> {
-    throw new Error('Not implemented');
+  getAllCycle(): Observable<LoanCycle[]> {
+    return this.http.get<LoanCycle[]>(this.baseUrl);
   }
 
-  getActive(): Observable<LoanCycle> {
-    throw new Error('Not implemented');
+  getCycleActive(): Observable<LoanCycle> {
+    return this.http.get<LoanCycle>(`${this.baseUrl}/active`);
   }
 
-  getById(id: number): Observable<LoanCycle> {
-    throw new Error('Not implemented');
+  getCycleByCycleId(id: number): Observable<LoanCycle> {
+    return this.http.get<LoanCycle>(`${this.baseUrl}/${id}`);
   }
 
-  lock(id: number, username: string): Observable<void> {
-    throw new Error('Not implemented');
+  lockCycle(id: number, username: string): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/${id}/lock`, { username });
   }
 }

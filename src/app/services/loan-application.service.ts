@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -19,79 +19,81 @@ export class LoanApplicationService {
     return this.http.post<LoanApplication>(this.baseUrl, dto);
   }
 
-  updateLoan(id: number, dto: LoanApplication, username: string): Observable<LoanApplication> {
-    return this.http.put<LoanApplication>(`{this.baseUrl}$/{id}}`, dto);
+  updateLoan(id: number, dto: LoanApplication): Observable<LoanApplication> {
+    return this.http.put<LoanApplication>(`${this.baseUrl}/${id}`, dto);
   }
 
-  deleteLaon(id: number, username: string): Observable<void> {
-    return this.http.delete<void>(`{this.baseUrl}/${id}`);
+  deleteLoan(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
-  getById(id: number): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  getLoanByLoanId(id: number): Observable<LoanApplication> {
+    return this.http.get<LoanApplication>(`${this.baseUrl}/${id}`);
   }
 
-  getAll(status?: LoanStatus): Observable<LoanApplication[]> {
-    throw new Error('Not implemented');
+  getAllLoan(status?: string): Observable<LoanApplication[]> {
+    let params = new HttpParams();
+    if (status) params = params.set('status', status);
+    return this.http.get<LoanApplication[]>(this.baseUrl, { params });
   }
 
-  myApplications(username: string): Observable<LoanApplication[]> {
-    throw new Error('Not implemented');
+  getCustomerApplications(): Observable<LoanApplication[]> {
+    return this.http.get<LoanApplication[]>(`${this.baseUrl}/my-applications`);
   }
 
-  auditLog(id: number): Observable<AuditLog[]> {
-    throw new Error('Not implemented');
+  getLoanAuditLog(id: number): Observable<AuditLog[]> {
+    return this.http.get<AuditLog[]>(`${this.baseUrl}/${id}/audit-log`);
   }
 
   // ---------- LOAN OFFICER ----------
 
-  submit(id: number, username: string): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  submitLoan(id: number): Observable<LoanApplication> {
+    return this.http.post<LoanApplication>(`${this.baseUrl}/${id}/submit`, {});
   }
 
-  withdraw(id: number, username: string): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  withdraw(id: number): Observable<LoanApplication> {
+    return this.http.post<LoanApplication>(`${this.baseUrl}/${id}/withdraw`, {});
   }
 
   // ---------- UNDERWRITER ----------
 
   pendingReview(): Observable<LoanApplication[]> {
-    throw new Error('Not implemented');
+    return this.http.get<LoanApplication[]>(`${this.baseUrl}/pending-review`);
   }
 
-  startReview(id: number, username: string): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  startReview(id: number): Observable<LoanApplication> {
+    return this.http.post<LoanApplication>(`${this.baseUrl}/${id}/start-review`, {});
   }
 
-  approve(id: number, username: string): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  approve(id: number): Observable<LoanApplication> {
+    return this.http.post<LoanApplication>(`${this.baseUrl}/${id}/approve`, {});
   }
 
-  reject(id: number, username: string, reason: string): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  reject(id: number, reason: string): Observable<LoanApplication> {
+    return this.http.post<LoanApplication>(`${this.baseUrl}/${id}/reject`, { reason });
   }
 
-  returnForChanges(id: number, username: string, reason: string): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  returnForChanges(id: number, reason: string): Observable<LoanApplication> {
+    return this.http.post<LoanApplication>(`${this.baseUrl}/${id}/return`, { reason });
   }
 
   // ---------- SENIOR APPROVER ----------
 
   pendingSeniorApproval(): Observable<LoanApplication[]> {
-    throw new Error('Not implemented');
+    return this.http.get<LoanApplication[]>(`${this.baseUrl}/pending-senior-approval`);
   }
 
-  seniorApprove(id: number, username: string): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  seniorApprove(id: number): Observable<LoanApplication> {
+    return this.http.post<LoanApplication>(`${this.baseUrl}/${id}/senior-approve`, {});
   }
 
   // ---------- DISBURSEMENT ----------
 
   approved(): Observable<LoanApplication[]> {
-    throw new Error('Not implemented');
+    return this.http.get<LoanApplication[]>(`${this.baseUrl}/approved`);
   }
 
-  disburse(id: number, username: string): Observable<LoanApplication> {
-    throw new Error('Not implemented');
+  disburse(id: number): Observable<LoanApplication> {
+    return this.http.post<LoanApplication>(`${this.baseUrl}/${id}/disburse`, {});
   }
 }
