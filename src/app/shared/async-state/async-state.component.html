@@ -11,8 +11,9 @@
   </ng-container>
 
   <ng-container *ngSwitchCase="'success'">
-    <ng-container
-      *ngTemplateOutlet="successTpl; context: { $implicit: data }">
+    <ng-container *ngIf="successTpl"
+      [ngTemplateOutlet]="successTpl"
+      [ngTemplateOutletContext]="{ $implicit: data }">
     </ng-container>
   </ng-container>
 

@@ -1,1 +1,17 @@
-<p>my-applications works!</p>
+<div class="grid-wrapper">
+  <div *ngIf="isLoading" class="state state--loading">Loading…</div>
+  <div *ngIf="loadError" class="state state--error">{{ loadError }}</div>
+
+  <ag-grid-angular
+    *ngIf="!isLoading && !loadError"
+    style="width: 100%; height: 600px;"
+    class="ag-theme-alpine custom-grid"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [pagination]="true"
+    [paginationPageSize]="10"
+    [rowHeight]="60"
+    [headerHeight]="50">
+  </ag-grid-angular>
+</div>

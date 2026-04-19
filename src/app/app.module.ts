@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { MyApplicationsComponent } from './pages/my-applications/my-applications.component';
 import { NewLoanComponent } from './pages/new-loan/new-loan.component';
 import { AllLoanComponent } from './pages/all-loan/all-loan.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AllLoanComponent } from './pages/all-loan/all-loan.component';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
+    AgGridModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UserHeaderInterceptor, multi: true },

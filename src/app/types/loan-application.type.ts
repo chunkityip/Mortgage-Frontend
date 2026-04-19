@@ -8,6 +8,17 @@ export type LoanStatus =
   | 'DISBURSED'
   | 'EXPIRED';
 
+export const LOAN_STATUS_LABEL: Record<LoanStatus, string> = {
+  DRAFT:                   'Draft',
+  PENDING_REVIEW:          'Pending Review',
+  UNDER_REVIEW:            'Under Review',
+  PENDING_SENIOR_APPROVAL: 'Pending Senior Approval',
+  APPROVED:                'Approved',
+  REJECTED:                'Rejected',
+  DISBURSED:               'Disbursed',
+  EXPIRED:                 'Expired',
+};
+
 export interface LoanApplication {
   id?: number;
   applicationNumber?: string;

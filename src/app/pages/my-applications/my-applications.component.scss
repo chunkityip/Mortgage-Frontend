@@ -1,0 +1,12 @@
+.grid-wrapper {
+  padding: 24px;
+
+  .state {
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+
+    &--loading { color: #666; font-style: italic; }
+    &--error   { background: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }
+  }
+}
