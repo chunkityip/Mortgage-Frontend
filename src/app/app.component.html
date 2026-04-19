@@ -2,7 +2,7 @@
   <header class="app__header">
     <a class="app__brand" routerLink="/dashboard">Mortgage Loans</a>
     <div class="spacer"></div>
-    <app-role-switcher></app-role-switcher>
+    <app-role-switcher *ngIf="showDevTools"></app-role-switcher>
   </header>
 
   <main class="app__main">

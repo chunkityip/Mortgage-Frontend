@@ -1,0 +1,27 @@
+<ng-container [ngSwitch]="state?.status">
+
+  <ng-container *ngSwitchCase="'loading'">
+    <ng-container *ngTemplateOutlet="loadingTpl || defaultLoading"></ng-container>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'error'">
+    <ng-container
+      *ngTemplateOutlet="errorTpl || defaultError; context: { $implicit: errorMessage }">
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'success'">
+    <ng-container
+      *ngTemplateOutlet="successTpl; context: { $implicit: data }">
+    </ng-container>
+  </ng-container>
+
+</ng-container>
+
+<ng-template #defaultLoading>
+  <div class="async-state__loading">Loading…</div>
+</ng-template>
+
+<ng-template #defaultError let-err>
+  <div class="async-state__error">{{ err || 'Something went wrong' }}</div>
+</ng-template>
